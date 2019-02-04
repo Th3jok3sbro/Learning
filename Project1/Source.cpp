@@ -102,7 +102,7 @@ int main()
 			if (shop.swordStock.quantity < 1)
 			{
 				cout << "Would you like to buy anything else!?" << endl;
-				cout << "1) I would like to buy another sword!" << endl;
+				cout << "1) OUT OF STOCK" << endl;
 				cout << "2) I would like to buy a shield!" << endl;
 				cout << "3) I would like to buy a potion!" << endl;
 				cout << "4) I am leaving." << endl;
@@ -111,7 +111,7 @@ int main()
 			{
 				cout << "What would you like to buy?" << endl;
 				cout << "1) I would like to buy a sword!" << endl;
-				cout << "2) I would like to buy another shield!" << endl;
+				cout << "2) OUT OF STOCK" << endl;
 				cout << "3) I would like to buy a potion!" << endl;
 				cout << "4) I am leaving." << endl;
 			}
@@ -120,6 +120,22 @@ int main()
 				cout << "What would you like to buy?" << endl;
 				cout << "1) I would like to buy a sword!" << endl;
 				cout << "2) I would like to buy a shield!" << endl;
+				cout << "3) I would like to buy another potion!" << endl;
+				cout << "4) I am leaving." << endl;
+			}
+			else if (shop.swordStock.quantity < 1 && shop.shieldStock.quantity < 1)
+			{
+				cout << "What would you like to buy?" << endl;
+				cout << "1) OUT OF STOCK" << endl;
+				cout << "2) OUT OF STOCK" << endl;
+				cout << "3) I would like to buy a potion!" << endl;
+				cout << "4) I am leaving." << endl;
+			}
+			else if (shop.swordStock.quantity < 1 && shop.shieldStock.quantity < 1 && shop.potionStock.quantity < 5)
+			{
+				cout << "What would you like to buy?" << endl;
+				cout << "1) OUT OF STOCK" << endl;
+				cout << "2) OUT OF STOCK" << endl;
 				cout << "3) I would like to buy another potion!" << endl;
 				cout << "4) I am leaving." << endl;
 			}
