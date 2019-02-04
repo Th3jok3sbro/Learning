@@ -11,6 +11,8 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
+
 struct Item
 {
 	std::string name;
@@ -72,5 +74,64 @@ int main()
 	shop.shieldStock = shields;
 	shop.potionStock = potions;
 
+	cout << "Hello, what is your name Player?" << endl;
 
+	string pName;
+	cin >> pName;
+
+	char pChoice;
+	char pPlaying = 'Y';
+	int op;
+
+	int timesLooped = 0;
+
+	while (pPlaying == 'Y' || pPlaying == 'y')
+	{
+		if (timesLooped == 0)
+		{
+			cout << "Well " << pName << " welcome to my shop, my name is George!" << endl;
+			cout << "What would you like to buy?" << endl;
+			cout << "1) I would like to buy a sword!" << endl;
+			cout << "2) I would like to buy a shield!" << endl;
+			cout << "3) I would like to buy a potion!" << endl;
+			cout << "4) I am leaving." << endl;
+		}
+
+		if (timesLooped > 0)
+		{
+			if (shop.swordStock.quantity < 1)
+			{
+				cout << "Would you like to buy anything else!?" << endl;
+				cout << "1) I would like to buy another sword!" << endl;
+				cout << "2) I would like to buy a shield!" << endl;
+				cout << "3) I would like to buy a potion!" << endl;
+				cout << "4) I am leaving." << endl;
+			}
+			else if (shop.shieldStock.quantity < 1)
+			{
+				cout << "What would you like to buy?" << endl;
+				cout << "1) I would like to buy a sword!" << endl;
+				cout << "2) I would like to buy another shield!" << endl;
+				cout << "3) I would like to buy a potion!" << endl;
+				cout << "4) I am leaving." << endl;
+			}
+			else if (shop.potionStock.quantity < 5)
+			{
+				cout << "What would you like to buy?" << endl;
+				cout << "1) I would like to buy a sword!" << endl;
+				cout << "2) I would like to buy a shield!" << endl;
+				cout << "3) I would like to buy another potion!" << endl;
+				cout << "4) I am leaving." << endl;
+			}
+		}
+
+		switch (op)
+			case 1:
+			case 2:
+			case 3:
+			case 4:
+
+
+		timesLooped++
+	}
 }
