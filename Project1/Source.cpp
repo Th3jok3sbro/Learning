@@ -38,12 +38,14 @@ struct Buyer
 {
 	int gold;
 
-	int buy(Stock item)
+	int buy(Stock& item)
 	{
 		if (item.quantity > 0)
 		{
 			gold -= item.item.price;
+			item.quantity -= 1;
 		}
+		return gold, item.quantity;
 	}
 };
 
@@ -65,7 +67,7 @@ int main()
 	shields.item.price = 25;
 	shields.quantity = 1;
 
-	potions.item.name = { "potio" };
+	potions.item.name = { "Potion" };
 	potions.item.price = 5;
 	potions.quantity = 5;
 
@@ -79,7 +81,6 @@ int main()
 	string pName;
 	cin >> pName;
 
-	char pChoice;
 	char pPlaying = 'Y';
 	int op;
 
@@ -89,7 +90,10 @@ int main()
 	{
 		if (timesLooped == 0)
 		{
+			system("cls");
 			cout << "Well " << pName << " welcome to my shop, my name is George!" << endl;
+			system("pause");
+			system("cls");
 			cout << "What would you like to buy?" << endl;
 			cout << "1) I would like to buy a sword!" << endl;
 			cout << "2) I would like to buy a shield!" << endl;
@@ -99,7 +103,47 @@ int main()
 
 		if (timesLooped > 0)
 		{
-			if (shop.swordStock.quantity < 1)
+			if (shop.swordStock.quantity == 0 && shop.shieldStock.quantity == 0 && shop.potionStock.quantity == 0)
+			{
+				cout << "What would you like to buy?" << endl;
+				cout << "1) OUT OF STOCK" << endl;
+				cout << "2) OUT OF STOCK" << endl;
+				cout << "3) OUT OF STOCK" << endl;
+				cout << "4) I am leaving." << endl;
+			}
+			else if (shop.swordStock.quantity == 0 && shop.shieldStock.quantity == 0 && shop.potionStock.quantity < 5)
+			{
+				cout << "What would you like to buy?" << endl;
+				cout << "1) OUT OF STOCK" << endl;
+				cout << "2) OUT OF STOCK" << endl;
+				cout << "3) I would like to buy another potion!" << endl;
+				cout << "4) I am leaving." << endl;
+			}
+			else if (shop.swordStock.quantity == 0 && shop.shieldStock.quantity == 0)
+			{
+				cout << "What would you like to buy?" << endl;
+				cout << "1) OUT OF STOCK" << endl;
+				cout << "2) OUT OF STOCK" << endl;
+				cout << "3) I would like to buy a potion!" << endl;
+				cout << "4) I am leaving." << endl;
+			}
+			else if (shop.swordStock.quantity == 0 && shop.potionStock.quantity < 5)
+			{
+				cout << "What would you like to buy?" << endl;
+				cout << "1) OUT OF STOCK" << endl;
+				cout << "2) I would like to buy a shield!" << endl;
+				cout << "3) I would like to buy another potion!" << endl;
+				cout << "4) I am leaving." << endl;
+			}
+			else if (shop.shieldStock.quantity == 0 && shop.potionStock.quantity < 5)
+			{
+				cout << "What would you like to buy?" << endl;
+				cout << "1) I would like to but a sword" << endl;
+				cout << "2) OUT OF STOCK" << endl;
+				cout << "3) I would like to buy another potion!" << endl;
+				cout << "4) I am leaving." << endl;
+			}
+			else if (shop.swordStock.quantity == 0)
 			{
 				cout << "Would you like to buy anything else!?" << endl;
 				cout << "1) OUT OF STOCK" << endl;
@@ -107,7 +151,7 @@ int main()
 				cout << "3) I would like to buy a potion!" << endl;
 				cout << "4) I am leaving." << endl;
 			}
-			else if (shop.shieldStock.quantity < 1)
+			else if (shop.shieldStock.quantity == 0)
 			{
 				cout << "What would you like to buy?" << endl;
 				cout << "1) I would like to buy a sword!" << endl;
@@ -123,31 +167,55 @@ int main()
 				cout << "3) I would like to buy another potion!" << endl;
 				cout << "4) I am leaving." << endl;
 			}
-			else if (shop.swordStock.quantity < 1 && shop.shieldStock.quantity < 1)
+			else if (shop.potionStock.quantity == 0)
 			{
 				cout << "What would you like to buy?" << endl;
-				cout << "1) OUT OF STOCK" << endl;
-				cout << "2) OUT OF STOCK" << endl;
-				cout << "3) I would like to buy a potion!" << endl;
+				cout << "1) I would like to buy a sword!" << endl;
+				cout << "2) I would like to buy a shield!" << endl;
+				cout << "3) OUT OF STOCK" << endl;
 				cout << "4) I am leaving." << endl;
 			}
-			else if (shop.swordStock.quantity < 1 && shop.shieldStock.quantity < 1 && shop.potionStock.quantity < 5)
-			{
-				cout << "What would you like to buy?" << endl;
-				cout << "1) OUT OF STOCK" << endl;
-				cout << "2) OUT OF STOCK" << endl;
-				cout << "3) I would like to buy another potion!" << endl;
-				cout << "4) I am leaving." << endl;
-			}
+			
+			
 		}
 
+		cin >> op;
+		system("cls");
+
 		switch (op)
+		{
 			case 1:
+			{
+				player.buy(shop.swordStock);
+				shop.gold += shop.swordStock.item.price;
+				timesLooped++;
+				break;
+			}
 			case 2:
+			{
+				player.buy(shop.shieldStock);
+				shop.gold += shop.shieldStock.item.price;
+				timesLooped++;
+				break;
+			}
 			case 3:
+			{
+				player.buy(shop.potionStock);
+				shop.gold += shop.potionStock.item.price;
+				timesLooped++;
+				break;
+			}
 			case 4:
-
-
-		timesLooped++
+			{
+				break;
+			}
+		}
+		if (op == 4 || player.gold <= 0)
+		{
+			cout << "Goodbye " << pName << " have a nice day!!!" << endl;
+			break;
+		}
 	}
+	system("pause");
+	return 1;
 }
