@@ -4,9 +4,8 @@
 //Each item should have the name of that item,
 //the cost per item and the quantity of that item currently in the shop.
 //The program should have the following options :
-//a. Change the price of each item in the shop
-//b. Spend gold to add stock for a specific item
-//c. Sell stock for a specific item to gain more gold
+//a. Spend gold to add stock for a specific item
+//b. Sell stock for a specific item to gain more gold
 
 #include <iostream>
 #include <string>
@@ -94,6 +93,8 @@ int main()
 			cout << "Well " << pName << " welcome to my shop, my name is George!" << endl;
 			system("pause");
 			system("cls");
+			cout << pName << "'s Gold: " << player.gold << endl;
+			cout << "Shopkeeper's Gold: " << shop.gold << endl;
 			cout << "What would you like to buy?" << endl;
 			cout << "1) I would like to buy a sword!" << endl;
 			cout << "2) I would like to buy a shield!" << endl;
@@ -105,6 +106,8 @@ int main()
 		{
 			if (shop.swordStock.quantity == 0 && shop.shieldStock.quantity == 0 && shop.potionStock.quantity == 0)
 			{
+				cout << pName << "'s Gold: " << player.gold << endl;
+				cout << "Shopkeeper's Gold: " << shop.gold << endl;
 				cout << "What would you like to buy?" << endl;
 				cout << "1) OUT OF STOCK" << endl;
 				cout << "2) OUT OF STOCK" << endl;
@@ -113,6 +116,8 @@ int main()
 			}
 			else if (shop.swordStock.quantity == 0 && shop.shieldStock.quantity == 0 && shop.potionStock.quantity < 5)
 			{
+				cout << pName << "'s Gold: " << player.gold << endl;
+				cout << "Shopkeeper's Gold: " << shop.gold << endl;
 				cout << "What would you like to buy?" << endl;
 				cout << "1) OUT OF STOCK" << endl;
 				cout << "2) OUT OF STOCK" << endl;
@@ -121,6 +126,8 @@ int main()
 			}
 			else if (shop.swordStock.quantity == 0 && shop.shieldStock.quantity == 0)
 			{
+				cout << pName << "'s Gold: " << player.gold << endl;
+				cout << "Shopkeeper's Gold: " << shop.gold << endl;
 				cout << "What would you like to buy?" << endl;
 				cout << "1) OUT OF STOCK" << endl;
 				cout << "2) OUT OF STOCK" << endl;
@@ -129,6 +136,8 @@ int main()
 			}
 			else if (shop.swordStock.quantity == 0 && shop.potionStock.quantity < 5)
 			{
+				cout << pName << "'s Gold: " << player.gold << endl;
+				cout << "Shopkeeper's Gold: " << shop.gold << endl;
 				cout << "What would you like to buy?" << endl;
 				cout << "1) OUT OF STOCK" << endl;
 				cout << "2) I would like to buy a shield!" << endl;
@@ -137,6 +146,8 @@ int main()
 			}
 			else if (shop.shieldStock.quantity == 0 && shop.potionStock.quantity < 5)
 			{
+				cout << pName << "'s Gold: " << player.gold << endl;
+				cout << "Shopkeeper's Gold: " << shop.gold << endl;
 				cout << "What would you like to buy?" << endl;
 				cout << "1) I would like to but a sword" << endl;
 				cout << "2) OUT OF STOCK" << endl;
@@ -145,6 +156,8 @@ int main()
 			}
 			else if (shop.swordStock.quantity == 0)
 			{
+				cout << pName << "'s Gold: " << player.gold << endl;
+				cout << "Shopkeeper's Gold: " << shop.gold << endl;
 				cout << "Would you like to buy anything else!?" << endl;
 				cout << "1) OUT OF STOCK" << endl;
 				cout << "2) I would like to buy a shield!" << endl;
@@ -153,6 +166,8 @@ int main()
 			}
 			else if (shop.shieldStock.quantity == 0)
 			{
+				cout << pName << "'s Gold: " << player.gold << endl;
+				cout << "Shopkeeper's Gold: " << shop.gold << endl;
 				cout << "What would you like to buy?" << endl;
 				cout << "1) I would like to buy a sword!" << endl;
 				cout << "2) OUT OF STOCK" << endl;
@@ -161,6 +176,8 @@ int main()
 			}
 			else if (shop.potionStock.quantity < 5)
 			{
+				cout << pName << "'s Gold: " << player.gold << endl;
+				cout << "Shopkeeper's Gold: " << shop.gold << endl;
 				cout << "What would you like to buy?" << endl;
 				cout << "1) I would like to buy a sword!" << endl;
 				cout << "2) I would like to buy a shield!" << endl;
@@ -169,6 +186,8 @@ int main()
 			}
 			else if (shop.potionStock.quantity == 0)
 			{
+				cout << pName << "'s Gold: " << player.gold << endl;
+				cout << "Shopkeeper's Gold: " << shop.gold << endl;
 				cout << "What would you like to buy?" << endl;
 				cout << "1) I would like to buy a sword!" << endl;
 				cout << "2) I would like to buy a shield!" << endl;
